@@ -15,9 +15,9 @@ class Solution {
         
         while(true){
             if(target<=nums[left])
-				return left;
-			if(target>nums[right])
-				return right+1;
+		return left;
+	    if(target>nums[right])
+		return right+1;
             int mid = (right + left) / 2;
             if(target <= nums[mid]){
                 right = mid - 1;
@@ -26,6 +26,6 @@ class Solution {
                 left = mid + 1;
             }
             
-		}
+	}
     }
 }
