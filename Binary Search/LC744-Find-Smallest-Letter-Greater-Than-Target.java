@@ -21,7 +21,7 @@ class Solution {
             if (letters[mid] <= target) {  //key point 2: when is > or >= 
                 left = mid;   //key point 3: left = mid or left = mid + 1;
             } else {
-                right = mid;  //key point 4:  
+                right = mid;  //key point 4:  right = mid or right = mid - 1;
             }
         }
         if (letters[left] > target) {  //key point 5: whether it's required to use if again;
