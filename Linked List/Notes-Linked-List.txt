@@ -1,0 +1,215 @@
+value semantics: Behavior where values are copied when assigned to each other or passed as parameters.
+When one primitive is assigned to another, its value is copied.
+Modifying the value of one variable does not affect others.
+
+2. reference semantics: Behavior where variables actually store the address of an object in memory.
+When one reference variable is assigned to another, the object is not copied; both variables refer to the same object.
+
+objects and arrays use reference semantics.  
+
+null : A value that does not refer to any object.
+The elements of an array of objects are initialized to null.
+
+Things you can do w/ null:
+1.store null in a variable or an array element
+String s = null;
+words[2] = null;
+
+2.print a null reference
+System.out.println(timmy.name);      // null
+
+ask whether a variable or array element is null
+if (timmy.name == null) { ...        // true
+
+
+3.pass null as a parameter to a method
+some methods dont like null parameters and throw exceptions
+
+return null from a method  (often to indicate failure)
+return null;
+
+
+4. dereference: To access data or methods of an object.
+It is illegal to dereference null (it causes an exception).
+null does not refer to any object, so it has no methods or data
+
+
+
+//Dummy Nodes
+//Two pointers
+
+一个node包含value和next，在计算机存储时只有一条地址信息，内存index；
+
+Dummy Node经典三步： 
+1.ListNode dummy = new ListNode(0);        
+2.dummy.next = head;
+
+3.return dummy.next;
+
+
+Key steps for linked list: 
+1. reverse linked list;
+2.merge two linked list;
+3. find middle;
+4.get the length of the linked list;
+
+//LinkList Node
+public class ListNode {
+    int data;
+    ListNode next;
+
+    public ListNode(int data) {
+        this.data = data;
+        this.next = null;
+    }
+
+    public ListNode(int data, ListNode next) {
+        this.data = data;
+        this.next = next;
+    }
+}
+
+
+
+public class ListNode {
+    int data;
+    ListNode next;
+
+    pubic ListNode(int d){
+        data = d;
+    }//constructor;
+
+    void appentToTail(int d){
+        ListNode end = new ListNode(d);
+        ListNode n = this;
+        while(n.next != null){
+            n = n.next;
+        }
+        n.next = end;
+    }
+}
+
+Delete a Node from a Singly Linked List:
+ListNode deleteNode(ListNode head, int d){
+    ListNode n = head;
+    if(n.data == d){
+        return head.next;
+    }
+
+    while(n.next != null){
+        if(n.next.data == d){
+            n.next = n.next.next;
+            return head;
+        }
+        n = n.next;
+    }
+
+    return head;
+}
+
+a variable  (left side of = )  is an arrow   (the base of an arrow)
+a value    (right side of = ) is an object   (a box what an arrow points at)
+
+Dont change list.  Make another variable, and change that.
+A ListNode variable is NOT a ListNode object
+
+
+ListNode current = list;
+
+ListNode current = list;
+while (current != null) {
+    System.out.println(current.data);
+    current = current.next;  // move to next node
+}
+
+Changing current does not damage the list.
+
+// Adds the given value to the end of the list.
+public void add(int value) {
+    if (front == null) {
+        // adding to an empty list
+        front = new ListNode(value);
+    } else {
+        // adding to the end of an existing list
+        ListNode current = front;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = new ListNode(value);
+    }
+}
+
+//get(index)
+// Returns value in list at given index.
+// Precondition: 0 <= index < size()
+public int get(int index) {
+    ListNode current = front;
+    for (int i = 0; i < index; i++) {
+        current = current.next;
+    }
+    return current.data;
+}
+
+//add to an index; 
+// Inserts the given value at the given index.
+// Precondition: 0 <= index <= size()
+public void add(int index, int value) {
+    if (index == 0) {
+        // adding to an empty list
+        front = new ListNode(value, front);
+    } else {
+        // inserting into an existing list
+        ListNode current = front;
+        for (int i = 0; i < index - 1; i++) {
+            current = current.next;
+        }
+        current.next = new ListNode(value,
+                                    current.next);
+    }
+}
+
+
+
+
+// Removes and returns the first value.
+// Throws a NoSuchElementException on empty list.
+public int remove() {
+    if (front == null) {
+        throw new NoSuchElementException();
+    } else {
+        int result = front.data;
+        front = front.next;
+        return result;
+    }
+}
+
+// Removes value at given index from list.
+// Precondition: 0 <= index < size()
+public void remove(int index) {
+    if (index == 0) {
+        // special case: removing first element
+        front = front.next;
+    } else {
+        // removing from elsewhere in the list
+        ListNode current = front;
+        for (int i = 0; i < index - 1; i++) {
+            current = current.next;
+        }
+        current.next = current.next.next;
+    }
+}
+
+
+List<String> list = new ArrayList<String>();
+
+ArrayList is faster for adding/removing at the end;
+LinkedList is faster for adding/removing at the front/middle.
+
+HashSet can search a huge data set for a value in short time;
+TreeSet is slower but keeps the set of data in a sorted order.
+
+List<String> list = new LinkedList<String>();
+...
+for (String s : list) {
+    System.out.println(s);
+
