@@ -1,0 +1,116 @@
+Hash Table is a data structure which organizes data using hash functions in order to support quick insertion and search.
+
+There are two different kinds of hash tables: hash set and hash map.
+
+The hash set is one of the implementations of a set data structure to store no repeated values.
+The hash map is one of the implementations of a map data structure to store (key, value) pairs.
+
+Hash Table is a data structure which organizes data using hash functions in order to support quick insertion and search.
+
+
+The key idea of Hash Table is to use a hash function to map keys to buckets. To be more specific,
+
+1.When we insert a new key, the hash function will decide which bucket the key should be assigned and the key will be stored in the corresponding bucket;
+2.When we want to search for a key, the hash table will use the same hash function to find the corresponding bucket and search only in the specific bucket
+
+
+Keys to design a Hash Table: 
+1. Hash Function
+The hash function is the most important component of a hash table which is used to map the key to a specific bucket. In the example in previous article, we use y = x % 5 as a hash function, where x is the key value and y is the index of the assigned bucket.
+
+The hash function will depend on the range of key values and the number of buckets.
+
+The hash function will depend on the range of key values and the number of buckets.
+
+Hash Function: 
+The hash function is the most important component of a hash table which is used to map the key to a specific bucket. 
+
+The hash function will depend on the range of key values and the number of buckets.
+
+The idea is to try to assign the key to the bucket as uniform as you can. Ideally, a perfect hash function will be a one-one mapping between the key and the bucket. However, in most cases a hash function is not perfect and it is a tradeoff between the amount of buckets and the capacity of a bucket.
+
+Let's assume that the bucket, which holds the maximum number of keys, has N keys.
+
+Typically, if N is constant and small, we can simply use an array to store keys in the same bucket. If N is variable or large, we might need to use height-balanced binary search tree instead.
+
+
+Complexity Analysis
+
+If there are M keys in total, we can achieve the space complexity of O(M) easily when using a hash table.
+
+However, you might have noticed that the time complexity of hash table has a strong relationship with the design.
+
+Most of us might have used an array in each bucket to store values in the same bucket. Ideally, the bucket size is small enough to be regarded as a constant. The time complexity of both insertion and search will be O(1).
+
+But in the worst case, the maximum bucket size will be N. And the time complexity will be O(1) for insertion but O(N) for search.
+
+The Principle of Built-in Hash Table
+
+The typical design of built-in hash table is:
+
+     1.The key value can be any hashable type. And a value which belongs to a hashable type will have a hashcode. This code will be used in the mapping function to get the bucket index.
+     2.Each bucket contains an array to store all the values in the same bucket initially.
+     3.If there are too many values in the same bucket, these values will be maintained in a height-balanced binary search tree instead.
+
+The average time complexity of both insertion and search is still O(1). And the time complexity in the worst case is O(logN) for both insertion and search by using height-balanced BST. It is a trade-off between insertion and search.
+
+Hash Set - Usage
+The hash set is one of the implementations of a set which is a data structure to store no repeated values. 
+
+
+Hash Map - Usage
+The hash map is one of the implementations of a map which is used to store (key, value) pairs.
+Hash Map Scenario I: Provide More Information
+
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+In this example, if we only want to return true if there is a solution, we can use a hash set to store all the values when we iterate the array and check if target - current_value is in the hash set or not.
+
+We need to store not only the number as the key but also the index as the value. 
+
+/*
+ * Template for using hash map to find duplicates.
+ * Replace ReturnType with the actual type of your return value.
+ */
+ReturnType aggregateByKey_hashmap(List<Type>& keys) {
+    // Replace Type and InfoType with actual type of your key and value
+    Map<Type, InfoType> hashmap = new HashMap<>();
+    for (Type key : keys) {
+        if (hashmap.containsKey(key)) {
+            if (hashmap.get(key) satisfies the requirement) {
+                return needed_information;
+            }
+        }
+        // Value can be any information you needed (e.g. index)
+        hashmap.put(key, value);    
+    }
+    return needed_information;
+}
+
+Hash Map:Scenario II - Aggregate by Key
+
+Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
+
+A simple way to solve this problem is to count the occurrence of each character first. And then go through the results to find out the first unique character.
+
+Therefore, we can maintain a hashmap whose key is the character while the value is a counter for the corresponding character. Each time when we iterate a character, we just add the corresponding value by 1.
+
+ The key to solving this kind of problem is to decide your strategy when you encounter an existing key.
+
+ /*
+ * Template for using hash map to find duplicates.
+ * Replace ReturnType with the actual type of your return value.
+ */
+ReturnType aggregateByKey_hashmap(List<Type>& keys) {
+    // Replace Type and InfoType with actual type of your key and value
+    Map<Type, InfoType> hashmap = new HashMap<>();
+    for (Type key : keys) {
+        if (hashmap.containsKey(key)) {
+            hashmap.put(key, updated_information);
+        }
+        // Value can be any information you needed (e.g. index)
+        hashmap.put(key, value);    
+    }
+    return needed_information;
+}
+

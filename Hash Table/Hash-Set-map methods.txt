@@ -1,0 +1,92 @@
+HashSet constructor and methods:
+HashSet():Constructs a new, empty set; the backing HashMap instance has default initial capacity (16) and load factor (0.75).
+HashSet(int initialCapacity):Constructs a new, empty set; the backing HashMap instance has the specified initial capacity and default load factor (0.75).
+
+1.boolean	add(E e)
+Adds the specified element to this set if it is not already present.
+
+4.boolean	contains(Object o)
+Returns true if this set contains the specified element.
+
+5.boolean	isEmpty()
+Returns true if this set contains no elements.
+
+7.boolean	remove(Object o)
+Removes the specified element from this set if it is present.
+
+8.int	size()
+Returns the number of elements in this set (its cardinality).
+
+2.void 	clear()
+Removes all of the elements from this set.
+3.Object	clone()
+Returns a shallow copy of this HashSet instance: the elements themselves are not cloned.
+6.Iterator<E>	iterator()
+Returns an iterator over the elements in this set.
+
+HashMap:
+The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits nulls.
+
+This implementation provides constant-time performance for the basic operations (get and put), assuming the hash function disperses the elements properly among the buckets. Iteration over collection views requires time proportional to the "capacity" of the HashMap instance (the number of buckets) plus its size (the number of key-value mappings). 
+
+ If multiple threads access a hash map concurrently, and at least one of the threads modifies the map structurally, it must be synchronized externally. 
+
+HashMap()
+Constructs an empty HashMap with the default initial capacity (16) and the default load factor (0.75).
+
+HashMap(int initialCapacity)
+Constructs an empty HashMap with the specified initial capacity and the default load factor (0.75).
+
+Method: 
+void	clear()
+Removes all of the mappings from this map.
+
+boolean	containsKey(Object key)
+Returns true if this map contains a mapping for the specified key.
+
+boolean	containsValue(Object value)
+Returns true if this map maps one or more keys to the specified value.
+
+V	computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)
+If the specified key is not already associated with a value (or is mapped to null), attempts to compute its value using the given mapping function and enters it into this map unless null
+
+V	get(Object key)
+Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+
+V	getOrDefault(Object key, V defaultValue)
+Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
+
+boolean	isEmpty()
+Returns true if this map contains no key-value mappings.
+
+Set<K>	keySet()
+Returns a Set view of the keys contained in this map.
+
+V	put(K key, V value)
+Associates the specified value with the specified key in this map.
+
+Set<Map.Entry<K,V>>	entrySet()
+Returns a Set view of the mappings contained in this map.
+
+
+V	putIfAbsent(K key, V value)
+If the specified key is not already associated with a value (or is mapped to null) associates it with the given value and returns null, else returns the current value.
+
+V	remove(Object key)
+Removes the mapping for the specified key from this map if present.
+
+boolean	remove(Object key, Object value)
+Removes the entry for the specified key only if it is currently mapped to the specified value.
+
+V	replace(K key, V value)
+Replaces the entry for the specified key only if it is currently mapped to some value.
+
+boolean	replace(K key, V oldValue, V newValue)
+Replaces the entry for the specified key only if currently mapped to the specified value.
+
+int	size()
+Returns the number of key-value mappings in this map
+
+Collection<V>	values()
+Returns a Collection view of the values contained in this map
+
